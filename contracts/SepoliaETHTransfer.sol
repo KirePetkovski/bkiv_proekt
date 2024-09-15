@@ -10,13 +10,9 @@ contract SepoliaETHTransfer {
     constructor() {
         owner = msg.sender;
     }
-
-    // Function to receive ETH
     receive() external payable {
         emit TransferReceived(msg.sender, msg.value);
     }
-
-    // Function to withdraw ETH from the contract to a specified address
     function transferTo(address payable _to, uint256 _amount) external {
         require(msg.sender == owner, "Only the owner can execute this transfer");
         require(address(this).balance >= _amount, "Insufficient contract balance");
@@ -29,3 +25,31 @@ contract SepoliaETHTransfer {
         return address(this).balance;
     }
 }
+
+// pragma solidity ^0.8.0;
+
+// contract SimpleTransfer {
+//     address public senderAddress;
+//     address public recipientAddress;
+//     uint256 public transferAmount;
+
+//     constructor(address _senderAddress, address _recipientAddress, uint256 _transferAmount) {
+//         senderAddress = _senderAddress;
+//         recipientAddress = _recipientAddress;
+//         transferAmount = _transferAmount;
+//     }
+
+//     function transfer() public {
+//         require(msg.sender == senderAddress, "Only the sender can initiate the transfer");
+//         require(address(this).balance >= transferAmount, "Insufficient balance in contract");
+        
+//         payable(recipientAddress).transfer(transferAmount);
+//     }
+
+//     function getContractBalance() public view returns (uint256) {
+//     return address(this).balance;
+// }
+
+
+//     receive() external payable {}
+// }
