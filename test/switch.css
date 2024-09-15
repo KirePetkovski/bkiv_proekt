@@ -1,0 +1,166 @@
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+h1 {
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+/* Status and Card Data */
+#status, #cardData, #accountAddress {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+/* Connect Button */
+#connectButton, #transferButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+#connectButton:hover, #transferButton:hover {
+  background-color: #0056b3;
+}
+
+/* Toggle Switch Styles */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: red; /* Red when off */
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: green; /* Green when on */
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Input Field Styles */
+input[type="text"], #ethAmount {
+  font-size: 1.2em;
+  padding: 10px;
+  margin: 10px 0;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+#ethAmount {
+  width: 19%; /* Smaller width for the amount field */
+  margin-bottom: 15px;
+}
+
+input[type="text"]:focus, #ethAmount:focus {
+  border-color: #007bff;
+}
+
+/* Number Pad Styles */
+#numberPad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.numberButton, #dotButton, #clearButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 1.5em;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.numberButton:hover, #dotButton:hover, #clearButton:hover {
+  background-color: #0056b3;
+}
+
+/* Transfer Button */
+#transferButton {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 19%;
+}
+
+#transferButton:hover {
+  background-color: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  body {
+      padding: 10px;
+  }
+
+  #numberPad {
+      grid-template-columns: repeat(2, 1fr);
+  }
+
+  #connectButton, #transferButton, .numberButton, #dotButton, #clearButton {
+      font-size: 1.2em;
+      padding: 10px;
+  }
+
+  #amountField {
+      width: 80%; /* Adjust amount field width on smaller screens */
+  }
+}
