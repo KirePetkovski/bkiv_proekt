@@ -53,9 +53,7 @@
                 status.textContent = 'Connected to Arduino';
                 console.log('Connected to Arduino');
     
-                // Ensure initial state is sent to Arduino
                 await writer.write(new TextEncoder().encode('0'));
-    
                 // Read data from Arduino
                 readFromArduino();
                
@@ -78,9 +76,8 @@
                     const text = new TextDecoder().decode(value);
                     buffer += text;
     
-                    // Process each complete line in the buffer
                     let lines = buffer.split('\n');
-                    buffer = lines.pop(); // Save the incomplete line back to the buffer
+                    buffer = lines.pop(); 
     
                     for (let line of lines) {
                         console.log('Received:', line.trim());
@@ -122,9 +119,9 @@
 
             try {
                 const transactionParameters = {
-                    to: 'CONTRACT_ADDRESS', // Replace with your deployed contract address
+                    to: 'CONTRACT_ADDRESS', // SMENI GO
                     from: account,
-                    value: (ethAmount * 1e18).toString(16) // Convert ETH to Wei and then to hex
+                    value: (ethAmount * 1e18).toString(16) //  0.001 ili 1 000 000 000 000 000
                 };
 
                 const txHash = await ethereum.request({
@@ -149,11 +146,10 @@
                 }
             } catch (error) {
                 console.error('Failed to send transaction:', error);
-                toggleSwitch.checked = false; // Set the switch to false on error
+                toggleSwitch.checked = false; //  error
             }
         }
 
-        // Event listener for number buttons
         document.querySelectorAll('.numberButton').forEach(button => {
             button.addEventListener('click', () => {
                 const ethAmountField = document.getElementById('ethAmount');
@@ -161,14 +157,13 @@
             });
         });
     
-        // Clear button functionality
         document.getElementById('clearButton').addEventListener('click', () => {
             document.getElementById('ethAmount').value = '';
         });
     
         document.getElementById('connectButton').addEventListener('click', () => {
             connectToArduino();
-           // connectToMetaMask(); // Connect to MetaMask when the button is clicked
+           // connectToMetaMask(); 
         });
     
         document.getElementById('transferButton').addEventListener('click', transferSepoliaETH);
