@@ -32,6 +32,8 @@ contract SepoliaETHTransfer {
 //     address public senderAddress;
 //     address public recipientAddress;
 //     uint256 public transferAmount;
+//     bool public isApproved;
+
 
 //     constructor(address _senderAddress, address _recipientAddress, uint256 _transferAmount) {
 //         senderAddress = _senderAddress;
@@ -44,6 +46,7 @@ contract SepoliaETHTransfer {
 //         require(address(this).balance >= transferAmount, "Insufficient balance in contract");
         
 //         payable(recipientAddress).transfer(transferAmount);
+//         isApproved = true;
 //     }
 
 //     function getContractBalance() public view returns (uint256) {
